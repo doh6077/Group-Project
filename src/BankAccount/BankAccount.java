@@ -84,10 +84,12 @@ public abstract class BankAccount {
         this.depositStrategy = depositStrategy;
     }
 
+    /*Retrieve customer information of a certain bank account*/
     public Customer getCustomer() {
         return customer;
     }
 
+    /*Set customer information for a certain bank account*/
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
