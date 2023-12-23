@@ -1,5 +1,8 @@
 package BankAccount;
 
+/**
+* Check Account type, subclass of BankAccount*/
+
 import Customer.Customer;
 import Enum.AccountType;
 
