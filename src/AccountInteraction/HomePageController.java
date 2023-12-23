@@ -114,6 +114,14 @@ public class HomePageController {
     private Customer loggedInCustomer;
     private CheckAccount customerCheckAccount;
     private SavingAccount customerSavingAccount;
+
+    /**
+     * Dynamiclly display user information and add list of aviable account to the combox on the front-end home page control panel
+     *
+     * @param no parameter
+     * @return void 
+     * @throws 
+     */
     @FXML
     public void initialize() {
         String currentUser = Main.getLoggedInUser();
