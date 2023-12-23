@@ -471,6 +471,13 @@ public class HomePageController {
         }
     }
 
+    /**
+     * Get the row index of the data and column index of account type based on account ID and file name 
+     * @param String accountID: account ID to be searched
+     * @param String filename: local file name
+     * @return void 
+     * @throws
+     */
     private String[] getRowColumnIndex(String accountID, String filename){
         String[] result = new String[2];
         ArrayList<String[]> readData = readDataFiles(filename);
@@ -486,6 +493,13 @@ public class HomePageController {
         return result;
     }
 
+    /**
+     * Get the row index of the data and column index of the account type based on account ID and file name 
+     * @param String accountID: account ID to be searched
+     * @param String filename: local file name
+     * @return void 
+     * @throws
+     */
     private BankAccount initializeBankInfo(TextField accountID, String filename){
         if (accountID == null ) {
             System.out.println("Invalid account ID provided."); // Debug message
@@ -522,6 +536,14 @@ public class HomePageController {
         
     }
 
+    /**
+     * Update the balance of a bank account in the data file based on account type and account ID
+     * @param BankAccount account: specific bank account
+     * @param TextField accountID: account ID to be updated
+     * @param String filename: local file name
+     * @return void 
+     * @throws
+     */
     private void updateBalance(BankAccount account,TextField accountID, String filename ){
         if (account == null) {
             System.out.println("Invalid account type provided."); // Debug message
@@ -545,6 +567,14 @@ public class HomePageController {
         }
     }
 
+    /**
+     * Update the term of a bank account in the data file based on account type and account ID
+     * @param BankAccount account: specific bank account
+     * @param TextField accountID: account ID to be updated
+     * @param String filename: local file name
+     * @return void 
+     * @throws
+     */
     private void updateTerm(BankAccount account, TextField accountID, String filename){
         ArrayList<String[]> readData = readDataFiles(filename);
         String[] rowColumnIndex = getRowColumnIndex(accountID.getText(), filename);
@@ -556,6 +586,13 @@ public class HomePageController {
         }
     }
 
+    /**
+     * Show alert based on certain types
+     * @param AlertType type: specific alert type
+     * @param String content: customized alert content
+     * @return void 
+     * @throws
+     */
     private void showAlert(AlertType type, String content) {
         Alert alert = new Alert(type);
         alert.setContentText(content);
