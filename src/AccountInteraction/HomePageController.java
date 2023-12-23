@@ -116,7 +116,7 @@ public class HomePageController {
     private SavingAccount customerSavingAccount;
 
     /**
-     * Dynamiclly display user information and add list of aviable account to the combox on the front-end home page control panel
+     * Dynamically display user information and add a list of available account to the combobox on the front-end home page control panel
      *
      * @param no parameter
      * @return void 
@@ -131,6 +131,14 @@ public class HomePageController {
         selectAccount.getItems().addAll(accountTypes);
     }
 
+    /**
+     * Get accounter types available to a user based on user name and database name
+     *
+     * @param username: user name of the user account
+     * @param userInfoFile: file name of the user data file 
+     * @return list<String>: list of string of account types
+     * @throws 
+     */
     private List<String> getAccountTypesForUser(String username, String userInfoFile) {
         List<String> accountTypes = new ArrayList<>();
         try (Scanner input = new Scanner(new File(userInfoFile))) {
@@ -152,11 +160,23 @@ public class HomePageController {
         return accountTypes;
     }
 
+    /**
+     * show transfer pane for transfer activity
+     * @param event: transfer action event
+     * @return void
+     * @throws 
+     */
     @FXML
     void onTransfer(ActionEvent event) {
         showPane(transferPane);
     }
 
+    /**
+     * show different deposit panes based on different account types
+     * @param event: deposit action event
+     * @return void
+     * @throws 
+     */
     @FXML
     void onDeposit(ActionEvent event) {
         String selectedItem = (String) selectAccount.getValue();
@@ -169,6 +189,12 @@ public class HomePageController {
         }
     }
 
+    /**
+     * show withdraw pane
+     * @param event: withdraw action event
+     * @return void
+     * @throws 
+     */
     @FXML
     void onWithdraw(ActionEvent event) {
         showPane(withdrawPane);
