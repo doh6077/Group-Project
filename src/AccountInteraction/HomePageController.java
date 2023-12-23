@@ -200,15 +200,14 @@ public class HomePageController {
         showPane(withdrawPane);
     }
 
+     /**
+     * Deposit on checking account with transaction feedback message
+     * @param event: deposit action event
+     * @return void
+     * @throws Exception
+     */
     @FXML
     void onConfirmDepositCheck(ActionEvent event) {
-        /*try{
-            BankAccount account = initializeBankInfo(accNoDepositCheck,"UserInfo.txt");
-            DepositStrategyFactory.getDepositStrategy(account).deposit(account,Double.parseDouble(amtDepositCheck.getText()));
-            updateBalance(account,accNoDepositCheck,"UserInfo.txt");
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }*/
             try {
             BankAccount account = initializeBankInfo(accNoDepositCheck, "UserInfo.txt");
             
@@ -229,22 +228,25 @@ public class HomePageController {
         }
     }
 
+    /**
+     * When canceling a deposit on checking account, direct to the home page 
+     * @param event: deposit cancellation action
+     * @return void
+     * @throws 
+     */
     @FXML
     void onCancelDepositCheck(ActionEvent event) {
         showPane(homePane);
     }
 
+    /**
+     * Deposit on savings account with transaction feedback message
+     * @param event: deposit action event
+     * @return void
+     * @throws InvalidInputException, SavingThresholdException, Exception
+     */
         @FXML
     void onConfirmDepositSaving(ActionEvent event) {
-        /*try{
-            BankAccount account = initializeBankInfo(accNoDepositSaving,"UserInfo.txt");
-            DepositStrategyFactory.getDepositStrategy(account).deposit(account,Double.parseDouble(amtDepositSaving.getText()));
-            account.setTerm(termSaving.getText());
-            updateBalance(account,accNoDepositSaving,"UserInfo.txt");
-            updateTerm(account,accNoDepositSaving,"UserInfo.txt");
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }*/
         try {
             BankAccount account = initializeBankInfo(accNoDepositSaving, "UserInfo.txt");
             DepositStrategy strategy = DepositStrategyFactory.getDepositStrategy(account);
@@ -269,33 +271,36 @@ public class HomePageController {
         }
     }
 
+    /**
+     * When canceling a deposit on the savings account, direct to the home page 
+     * @param event: deposit cancellation action
+     * @return void
+     * @throws 
+     */
     @FXML
     void onCancelDepositSaving(ActionEvent event) {
         showPane(homePane);
     }
 
+    /**
+     * Dynamically choose transfer methods between accounts with a transaction feedback message
+     * @param event: transfer action event
+     * @return void
+     * @throws ExcessTransferException, InvalidInputException, MinimumBalanceException, SavingTransferLimitException, Exception
+     */
     @FXML
     void onConfirmTransfer(ActionEvent event){
         try{
-            System.out.println(1);
             BankAccount fromAccount = initializeBankInfo(fromAccTransfer,"UserInfo.txt");
-            System.out.println(2);
             BankAccount toAccount = initializeBankInfo(toAccTransfer,"UserInfo.txt");
-            System.out.println(3);
             TransferStrategy strategy = TransferStrategyFactory.getTransferStrategy(fromAccount);
-            System.out.println(4);
             if (strategy != null){
-                System.out.println(5);
                 strategy.transfer(fromAccount,toAccount,Double.parseDouble(amtAccTransfer.getText()));
-                System.out.println(6);
                 updateBalance(fromAccount,fromAccTransfer,"UserInfo.txt");
-                System.out.println(7);
                 updateBalance(toAccount,toAccTransfer,"UserInfo.txt");
-                System.out.println(8);
                 showAlert(AlertType.INFORMATION, "Transfer successful!");
                
             }else {
-                System.out.println(6);
                 showAlert(AlertType.ERROR, "Error: Transfer FAILED");
             }
                
@@ -318,11 +323,23 @@ public class HomePageController {
         
     }
 
+    /**
+     * When canceling a transfer on the account, direct to the home page 
+     * @param event: deposit cancellation action
+     * @return void
+     * @throws 
+     */
     @FXML
     void onCancelTransfer(ActionEvent event) {
         showPane(homePane);
     }
 
+    /**
+     * Dynamically choose withdrawal methods between accounts with a transaction feedback message
+     * @param event: transfer action event
+     * @return void
+     * @throws ExcessTransferException, InvalidInputException, MinimumBalanceException, SavingTransferLimitException, Exception
+     */
     @FXML
     void onConfirmWithdraw(ActionEvent event) {
          try{
@@ -347,16 +364,34 @@ public class HomePageController {
         
     }
 
+    /**
+     * When canceling a withdrawal on the account, direct to the home page 
+     * @param event: deposit cancellation action
+     * @return void
+     * @throws 
+     */
     @FXML
     void onCancelWithdraw(ActionEvent event) {
         showPane(homePane);
     }
 
+    /**
+     * On log out, direct to the sign-in page 
+     * @param event: log out action
+     * @return void
+     * @throws 
+     */
     @FXML
     void onLogOut(ActionEvent event) {
         Main.setRoot("Main", 400, 200);
     }
 
+    /**
+     * Dynamically show different user account front pages based on the selection of bank account types after login
+     * @param event: account selection action
+     * @return void
+     * @throws 
+     */
     @FXML
     public void onSelect(ActionEvent event) {
         String selectedItem = (String) selectAccount.getValue();
@@ -371,6 +406,12 @@ public class HomePageController {
         }
     }
 
+     /**
+     * show different front-end panes based on pane selection
+     * @param paneToShow: AnchorPane to show by selection
+     * @return void
+     * @throws 
+     */
     private void showPane(AnchorPane paneToShow) {
         homePane.setVisible(false);
         checkHomePane.setVisible(false);
@@ -391,7 +432,12 @@ public class HomePageController {
         depositPaneSaving.setOpacity(paneToShow == depositPaneSaving ? 1 : 0);
     }
 
-
+     /**
+     * Read data from local data file
+     * @param paneToShow: AnchorPane to show by selection
+     * @return ArrayList<String[]> txtLines: a string list of every line in the file 
+     * @throws IOException
+     */
     private ArrayList<String[]> readDataFiles(String filename){
         ArrayList<String[]> txtLines = new ArrayList();    
         try (Scanner input = new Scanner(new File(filename))) {   
@@ -405,6 +451,13 @@ public class HomePageController {
         return  txtLines;
     }
 
+    /**
+     * Write data to local data file
+     * @param ArrayList<String[]> userData: a string list of data to be written to local data file
+     * @param String filename: local file name
+     * @return void 
+     * @throws IOException
+     */
     private void writeDataFiles(ArrayList<String[]> userData,String filename){
         try (PrintWriter writer = new PrintWriter(new FileWriter(filename))) {
             for(String[] line : userData){
