@@ -1,5 +1,10 @@
 package StrategyFactory;
 
+/**
+*Determine different deposit strategies based on types of bank accounts. 
+*Check accounts use deposit method tailored for check accounts
+*Savings accounts use deposit method tailored for savings accounts */
+
 import java.util.HashMap;
 import java.util.Map;
 import BankAccount.*;
@@ -11,6 +16,7 @@ public class DepositStrategyFactory {
         CONTAINER.put(CheckAccount.class, new CheckDeposit());
         CONTAINER.put(SavingAccount.class, new SavingDeposit());
     }
+
 
     public static DepositStrategy getDepositStrategy(BankAccount account) {
         return CONTAINER.get(account.getClass());
