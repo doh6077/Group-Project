@@ -18,7 +18,7 @@ public class WithdrawFXML extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        // Create the root TitledPane
+        // Create the main TitledPane
         TitledPane titledPane = new TitledPane("Bank Management", null);
         titledPane.setAnimated(false);
         titledPane.setPrefSize(600, 400);
@@ -27,14 +27,14 @@ public class WithdrawFXML extends Application {
         AnchorPane contentPane = new AnchorPane();
         contentPane.setPrefSize(300, 300);
 
-        // Create the Withdraw Text
+        // Create the "Withdraw" Text
         Text withdrawText = new Text("Withdraw");
         withdrawText.setFont(Font.font("Elephant", 25));
         HBox withdrawBox = new HBox(withdrawText);
         withdrawBox.setLayoutX(58);
         withdrawBox.setLayoutY(25);
 
-        // Create the Account Number Text and TextField
+        // Create the "Account Number" Text and TextField
         Text accountNumberText = new Text("Account Number:");
         accountNumberText.setFont(Font.font("SansSerif Regular", 20));
         TextField accountNumberField = new TextField();
@@ -43,7 +43,7 @@ public class WithdrawFXML extends Application {
         accountNumberBox.setLayoutY(94);
         HBox.setMargin(accountNumberText, new Insets(0, 35, 0, 30));
 
-        // Create the Withdraw Amount Text and TextField
+        // Create the "Withdraw Amount" Text and TextField
         Text withdrawAmountText = new Text("Withdraw Amount:");
         withdrawAmountText.setFont(Font.font("SansSerif Regular", 20));
         TextField withdrawAmountField = new TextField();
@@ -53,7 +53,7 @@ public class WithdrawFXML extends Application {
         HBox.setMargin(withdrawAmountText, new Insets(0, 35, 0, 15));
         HBox.setMargin(withdrawAmountField, new Insets(0, 0, 0, 10));
 
-        // Create the Cancel and Confirm Buttons
+        // Create the "Cancel" and "Confirm" Buttons
         Button cancelBtn = new Button("Cancel");
         Button confirmBtn = new Button("Confirm");
         HBox buttonsBox = new HBox(cancelBtn, confirmBtn);
@@ -62,9 +62,9 @@ public class WithdrawFXML extends Application {
         HBox.setMargin(cancelBtn, new Insets(0, 0, 0, 10));
         HBox.setMargin(confirmBtn, new Insets(0, 0, 0, 10));
 
-        // Set actions for Cancel and Confirm buttons
+        // Set actions for "Cancel" and "Confirm" buttons
         cancelBtn.setOnAction(e -> {
-            // Information Alert for canceling the transaction
+            // Display an information alert for canceling the transaction
             callAlert("Cancel", "Your transaction has been successfully canceled");
 
             // Reset text fields
@@ -73,8 +73,6 @@ public class WithdrawFXML extends Application {
         });
 
         confirmBtn.setOnAction(e -> {
-            // Implement the logic for the confirm button action here
-            // (e.g., perform the actual withdrawal)
             String amountText = withdrawAmountField.getText();
             callAlert("Confirm", "You have successfully withdrawn $" + amountText);
 
@@ -83,10 +81,10 @@ public class WithdrawFXML extends Application {
             withdrawAmountField.setText("");
         });
 
-        // Add all the components to the content AnchorPane
+        // Add all components to the content AnchorPane
         contentPane.getChildren().addAll(withdrawBox, accountNumberBox, withdrawAmountBox, buttonsBox);
 
-        // Set the content of the TitledPane
+        // Set the content of the main TitledPane
         titledPane.setContent(contentPane);
 
         // Create the Scene and set it to the primary stage
@@ -96,7 +94,7 @@ public class WithdrawFXML extends Application {
         primaryStage.show();
     }
 
-    // Method to show information alert
+    // Method to display an information alert
     public void callAlert(String title, String text) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
