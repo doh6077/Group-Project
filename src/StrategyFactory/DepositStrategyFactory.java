@@ -1,7 +1,7 @@
 package StrategyFactory;
 
 /**
-*Determine different deposit strategies based on types of bank accounts. 
+*Use Factory model to determine different deposit strategies based on types of bank accounts. 
 *Check accounts use deposit method tailored for check accounts
 *Savings accounts use deposit method tailored for savings accounts */
 
