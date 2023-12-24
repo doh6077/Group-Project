@@ -11,6 +11,7 @@ import BankAccount.*;
 import DepositStrategy.*;
 
 public class DepositStrategyFactory {
+    /*Map different deposit methods for check account and savings account*/
     private static final Map<Class<? extends BankAccount>, DepositStrategy> CONTAINER = new HashMap<>();
     static {
         CONTAINER.put(CheckAccount.class, new CheckDeposit());
