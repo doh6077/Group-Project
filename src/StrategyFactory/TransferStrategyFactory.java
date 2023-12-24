@@ -1,7 +1,7 @@
 
 package StrategyFactory;
 /**
-*Determine different transfer strategies based on types of bank accounts. 
+*Use factory model to dynamically determine different transfer strategies based on types of bank accounts. 
 *Check accounts use transfer method tailored for check accounts
 *Savings accounts use transfer method tailored for savings accounts */
  
