@@ -9,15 +9,19 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AccountInteraction.LoginController">
    <children>
+      <!-- Label for "Log In" -->
       <Label layoutX="59.0" layoutY="40.0" text="Log In">
          <font>
             <Font name="Elephant" size="18.0" />
          </font>
       </Label>
+      <!-- Label and TextField for "User Name" -->
       <Label layoutX="59.0" layoutY="91.0" text="User Name" />
+      <!-- Label and TextField for "Password" -->
       <Label layoutX="59.0" layoutY="131.0" text="Password" />
       <TextField fx:id="usernameInput" layoutX="139.0" layoutY="87.0" />
       <TextField fx:id="passwordInput" layoutX="140.0" layoutY="127.0" />
+      <!-- Buttons for "Sign In" and "Cancel" -->
       <Button fx:id="btnSignin" layoutX="236.0" layoutY="174.0" mnemonicParsing="false" onAction="#onClickSignin" text="Sign In" />
       <Button fx:id="btnCancel" layoutX="162.0" layoutY="174.0" mnemonicParsing="false" onAction="#onClickCancel" text="Cancel" />
    </children>
