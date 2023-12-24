@@ -25,7 +25,7 @@ import WithdrawStrategy.WithdrawStrategy;
  
 
 public class TransferStrategyFactory {
-    /*Map CheckTransfer method for check account and SavingTransfer method for savings account*/
+    /*Map different transfer methods for check account and savings account*/
     private static final Map<Class<? extends BankAccount>, TransferStrategy> CONTAINER = new HashMap<>();
     static {
         CONTAINER.put(CheckAccount.class, new CheckTransfer());
