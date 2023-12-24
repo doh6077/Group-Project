@@ -50,11 +50,16 @@ public class SignupController {
 
         @FXML
     void onClickCreate(ActionEvent event) {
+        // ArrayList to store created bank accounts
         ArrayList<BankAccount> bankAccounts = new ArrayList<>();
-
+        
+        // Check if the username is unique
         if(isUserUnique(username.getText(),"UserInfo.txt")){
+            // Create instances of CheckAccount and SavingAccount
              BankAccount checkAccount = new CheckAccount(AccountType.CHECKINGACCOUNT, new Customer());
              BankAccount savingAccount = new SavingAccount();
+
+            // Logic for handling selected checkboxes
             if(btnChecking.isSelected() && btnSaving.isSelected()){
                 savingAccount.setAccountType(AccountType.SAVINGACCOUNT);
                 savingAccount.generateAccountNumber();
@@ -78,6 +83,7 @@ public class SignupController {
             
             
         }else{
+            // Display an alert if the username is not unique
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Alert");
             alert.setHeaderText(null);
@@ -89,9 +95,10 @@ public class SignupController {
 
         @FXML
     void onClickCancel(ActionEvent event) {
+        // Redirect to the main page when the user clicks the "Cancel"
         Main.setRoot("Main",400,200);
     }
-
+    // Check if a username is unique by reading from a file
     public static boolean isUserUnique(String username, String filename){
         boolean unique = true;
         try(Scanner input = new Scanner(new File(filename))){
@@ -107,7 +114,7 @@ public class SignupController {
         }    
         return unique;
     }
- 
+     // Write user information and bank account details to a file
     public static void signUp(String filename,String username, String password,String fullName, String email, String ssn,ArrayList<BankAccount> bankaccounts){
         try(PrintWriter writer = new PrintWriter(new FileWriter(filename, true))){
             writer.print(username + "," + password + "," + fullName + "," + email + "," +ssn);
@@ -116,6 +123,8 @@ public class SignupController {
                 +"," + account.getBalance()+","+account.getTerm());
             }
             writer.println();
+
+            // Display a success message using an alert
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Alert");
             alert.setHeaderText(null);
