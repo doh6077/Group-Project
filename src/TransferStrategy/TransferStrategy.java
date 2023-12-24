@@ -1,7 +1,7 @@
 package TransferStrategy;
 
 /**
-*TransferStrategy interface implementable by other classes to customize methods for determining excess of transfer limit
+*TransferStrategy interface implementable by other classes to customize methods for determining the excess of transfer limit
 *and execute transfer activity*/
 
 import BankAccount.BankAccount;
