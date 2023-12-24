@@ -17,7 +17,7 @@ public class DepositStrategyFactory {
         CONTAINER.put(SavingAccount.class, new SavingDeposit());
     }
 
-
+/*Get specific deposit strategy based on bank account type*/
     public static DepositStrategy getDepositStrategy(BankAccount account) {
         return CONTAINER.get(account.getClass());
     }
