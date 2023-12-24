@@ -7,6 +7,8 @@ package WithdrawStrategy;
 import BankAccount.BankAccount;
 
 public interface WithdrawStrategy {
+    /*Determine whether the amount to be withdrawn is over limit*/
     boolean isWithdrawLimit(double Amount);
+    /*Carry out the withdrawal activity of certain valid amount based on a valid bank account*/
     void withdraw(BankAccount account, double amount)throws Exception;
 }
