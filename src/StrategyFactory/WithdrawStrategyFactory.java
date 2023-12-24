@@ -15,6 +15,7 @@ import WithdrawStrategy.*;
 
  
 public class WithdrawStrategyFactory {
+   /*Map different withdrawal methods for check account and savings account*/
     private static final Map<Class<? extends BankAccount>, WithdrawStrategy> CONTAINER = new HashMap<>();
     static {
         CONTAINER.put(CheckAccount.class, new CheckWithdraw());
