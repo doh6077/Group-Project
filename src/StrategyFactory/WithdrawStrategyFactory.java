@@ -1,5 +1,10 @@
 package StrategyFactory;
 
+/**
+*Use factory model to dynamically determine different withdrawal strategies based on types of bank accounts. 
+*Check accounts use withdrawal method tailored for check accounts
+*Savings accounts use withdrawal method tailored for savings accounts */
+
 import java.util.HashMap;
 import java.util.Map;
 import BankAccount.*;
@@ -16,6 +21,7 @@ public class WithdrawStrategyFactory {
         CONTAINER.put(SavingAccount.class, new SavingWithdraw());
     }
 
+ /*Get specific withdrawal strategy based on the type of bank account*/
     public static WithdrawStrategy getWithdrawStrategy(BankAccount account) {
         return CONTAINER.get(account.getClass());
     }
