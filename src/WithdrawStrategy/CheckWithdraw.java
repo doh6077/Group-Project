@@ -4,12 +4,19 @@ import BankAccount.*;
 import Enum.WithdrawLimit;
 import Exception.*;
 
+/**
+*Concrete withdrawal strategy class for Checking Account class implements the interface of WithdrawalStrategy
+*Provide methods to assess if withdrawal from checking account is within the valid limit
+*Provide concrete withdrawal method for checking account*/
 public class CheckWithdraw implements WithdrawStrategy{
 
     public CheckWithdraw(){
 
     }
 
+    /*Check if the amount entered by user is over the withdrawal limit
+    *@param double amount: amount to be withdrawn by user
+    *@return boolean: true if the transfer is within withdrawal limit otherwise return false*/
     public boolean isWithdrawLimit(double amount){
         if(amount>WithdrawLimit.TWOTHOUSAND.getValue()){
             return true;
