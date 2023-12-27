@@ -6,7 +6,7 @@ import Exception.*;
 
 /**
 *Concrete transfer strategy class for Checking Account class implements the interface of TransferStrategy
-*Provide methods to assess if transfer for checking account is within the valid limit
+*Provide methods to assess if transfer from checking account is within the valid limit
 *Provide concrete transfer method for checking account*/
 
 public class CheckTransfer implements TransferStrategy{
