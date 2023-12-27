@@ -4,11 +4,19 @@ import BankAccount.*;
 import Enum.TransferLimit;
 import Exception.*;
 
+/**
+*Concrete transfer strategy class for Checking Account class implements the interface of TransferStrategy
+*Provide methods to assess if transfer for checking account is within the valid limit
+*Provide concrete transfer method for checking account*/
+
 public class CheckTransfer implements TransferStrategy{
     public CheckTransfer(){
 
     }
 
+    /*Check if the amount entered by user is in valid numeric format
+    *@param String str: amount input by user
+    *@return boolean: true if input is in valid numeric format otherwise return false*/
     public boolean isNumeric(String str) {
         try {
             Double.parseDouble(str);
@@ -18,6 +26,9 @@ public class CheckTransfer implements TransferStrategy{
         }
     }
 
+    /*Check if the amount entered by user is over the transfer limit
+    *@param double amount: amount to be transferred by user
+    *@return boolean: true if the transfer is within transfer limit otherwise return false*/
     public boolean isTransferLimit(double amount){
         if(amount>TransferLimit.ONETHOUSAND.getValue()){
             return true;
@@ -26,6 +37,13 @@ public class CheckTransfer implements TransferStrategy{
         }
     }
 
+    /*Transfer method for checking account to transfer money from one account to another account with validation of 
+    *appropriate numeric format and minimum and maximum balance requirements
+    *@param BankAccount initialAccount: account where money transferred from
+    *@param BankAccount targetAccount: account where money transfers to
+    *@param double amount: amount of money to transfer
+    *@return boolean: void
+    *@throw exception: InvalidInputException, MinimumBalanceException, ExcessTransferException*/
     public void transfer(BankAccount initialAccount, BankAccount targetAccount, double amount) throws Exception{
         if (!(initialAccount instanceof CheckAccount)){ 
             throw new InvalidInputException("Error: Choose the wrong transfer method!");
