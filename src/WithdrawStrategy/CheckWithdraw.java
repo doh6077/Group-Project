@@ -24,6 +24,13 @@ public class CheckWithdraw implements WithdrawStrategy{
             return false;
         }
     }
+
+     /*Withdrawal method for checking account to withdraw money from one account to another account with validation of 
+    *appropriate numeric format and minimum and maximum balance requirements
+    *@param BankAccount account: account where money is withdrawn from
+    *@param double amount: amount of money to withdraw
+    *@return boolean: void
+    *@throw exception: InvalidInputException, MinimumBalanceException, ExcessTransferException*/
     public void withdraw(BankAccount account, double amount)throws Exception{
         if(amount>Double.parseDouble(account.getBalance())){
             throw new MinimumBalanceException("Error: Cannot withdraw more than balance!");
